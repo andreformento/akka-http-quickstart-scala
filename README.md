@@ -34,19 +34,19 @@ curl -H "Content-type: application/json" \
 
 - And then show users
 
-```
+```bash
 curl http://localhost:8080/users
 ```
 
 - To retrieve a specific user
 
-```
+```bash
 curl http://localhost:8080/users/Bill
 ```
 
 - Now `delete` Bill
 
-```
+```bash
 curl -X DELETE http://localhost:8080/users/Bill
 ```
 
