@@ -18,9 +18,7 @@ import com.example.UserRegistryActor._
 import akka.pattern.ask
 import akka.util.Timeout
 
-//#user-routes-class
 trait UserRoutes extends JsonSupport {
-  //#user-routes-class
 
   // we leave these abstract, since they will be provided by the App
   implicit def system: ActorSystem
@@ -33,9 +31,6 @@ trait UserRoutes extends JsonSupport {
   // Required by the `ask` (?) method below
   implicit lazy val timeout = Timeout(5.seconds) // usually we'd obtain the timeout from the system's configuration
 
-  //#all-routes
-  //#users-get-post
-  //#users-get-delete   
   lazy val userRoutes: Route =
     pathPrefix("users") {
       concat(
@@ -59,8 +54,6 @@ trait UserRoutes extends JsonSupport {
             }
           )
         },
-        //#users-get-post
-        //#users-get-delete
         path(Segment) { name =>
           concat(
             get {
@@ -70,7 +63,6 @@ trait UserRoutes extends JsonSupport {
               rejectEmptyResponse {
                 complete(maybeUser)
               }
-              //#retrieve-user-info
             },
             delete {
               //#users-delete-logic
@@ -80,12 +72,9 @@ trait UserRoutes extends JsonSupport {
                 log.info("Deleted user [{}]: {}", name, performed.description)
                 complete((StatusCodes.OK, performed))
               }
-              //#users-delete-logic
             }
           )
         }
       )
-      //#users-get-delete
     }
-  //#all-routes
 }

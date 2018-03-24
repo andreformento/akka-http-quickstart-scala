@@ -15,4 +15,3 @@ trait JsonSupport extends SprayJsonSupport {
 
   implicit val actionPerformedJsonFormat = jsonFormat1(ActionPerformed)
 }
-//#json-support
