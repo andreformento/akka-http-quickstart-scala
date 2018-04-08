@@ -10,3 +10,4 @@ At the sbt prompt, enter `run`
 ## References
 
 - https://developer.lightbend.com/guides/akka-quickstart-scala/
+- https://doc.akka.io/api/akka/current/akka/actor/Props.html
