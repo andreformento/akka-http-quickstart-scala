@@ -11,6 +11,13 @@ object Greeter {
 
 }
 
+object Printer {
+  def props: Props = Props[Printer]
+
+  final case class Greeting(greeting: String)
+
+}
+
 class Greeter(message: String, printerActor: ActorRef) extends Actor {
 
   import Greeter._
@@ -24,13 +31,6 @@ class Greeter(message: String, printerActor: ActorRef) extends Actor {
     case Greet =>
       printerActor ! Greeting(greeting)
   }
-}
-
-object Printer {
-  def props: Props = Props[Printer]
-
-  final case class Greeting(greeting: String)
-
 }
 
 class Printer extends Actor with ActorLogging {
